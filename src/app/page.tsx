@@ -5,7 +5,6 @@ import { db } from './firebase-config';
 import { collection, getDocs } from "firebase/firestore";
 import Image from "next/image";
 
-
 export default function Home() {
   const router = useRouter();
   const [obituaries, setObituaries] = useState([]);
@@ -23,18 +22,17 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="">
+    <main className="flex justify-center">
       <div className="fixed top-0 h-20 w-full flex justify-end items-center">
         <button className="w-32 h-16 bg-gray-500 rounded-sm mr-3" onClick={() => router.push('/components/Upload')}>Upload</button>
       </div>
-      <div className="mt-24 flex flex-col items-center">
+      <div className="mt-24 flex flex-wrap w-11/12 lg:bg-rose-300 items-center justify-between">
         {obituaries.map(obituary => (
-          <div key={obituary.id} className="bg-white shadow-md rounded-lg p-4 m-4 w-96">
-            <h2 className="text-xl font-bold">{obituary.fullName}</h2>
+          <div key={obituary.id} className="bg-white shadow-md rounded-lg p-4 m-4 w-96 h-[500px] overflow-scroll">
+            
+             <h2 className="text-xl font-bold">{obituary.fullName}</h2>
             <p>{obituary.biography}</p>
-            {/* {obituary.image && (
-              <Image src={obituary.image} alt={obituary.fullName} width={400} height={300} />
-            )} */}
+           
           </div>
         ))}
       </div>

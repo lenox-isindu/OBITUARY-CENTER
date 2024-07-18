@@ -1,20 +1,34 @@
-// Upload.js
 'use client'
 import React, { useState } from 'react';
-import { db } from '../../firebase-config';
+import { db, storage } from '../../firebase-config';
 import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function Upload() {
     const [fullName, setFullName] = useState('');
     const [biography, setBiography] = useState('');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState(null);
+
+    const handleImageChange = (e) => {
+        if (e.target.files[0]) {
+            setImage(e.target.files[0]);
+        }
+    };
 
     const handleUpload = async () => {
+        let imageUrl = '';
+
+        if (image) {
+            const storageRef = ref(storage, `images/${image.name}`);
+            const snapshot = await uploadBytes(storageRef, image);
+            imageUrl = await getDownloadURL(snapshot.ref);
+        }
+
         try {
             const docRef = await addDoc(collection(db, "obituaries"), {
                 fullName: fullName,
                 biography: biography,
-                image: image
+                image: imageUrl
             });
             console.log("Document written with ID: ", docRef.id);
         } catch (e) {
@@ -35,7 +49,7 @@ export default function Upload() {
                 </div>
                 <div className="flex flex-col">
                     <label htmlFor="image">Image</label>
-                    <input type="text" id="image" value={image} onChange={(e) => setImage(e.target.value)} />
+                    <input type="file" id="image" accept="image/*" onChange={handleImageChange} />
                 </div>
                 <button onClick={handleUpload}>Upload</button>
             </div>
