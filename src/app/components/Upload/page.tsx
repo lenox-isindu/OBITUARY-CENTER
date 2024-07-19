@@ -37,21 +37,22 @@ export default function Upload() {
     };
 
     return (
+        
         <div className="flex flex-col items-center justify-center h-[100vh]">
             <div>
-                <div className="flex flex-col">
-                    <label htmlFor="fullName">Full Names</label>
-                    <input type="text" id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+                <div className="flex flex-col ">
+                    <label className="text-white" htmlFor="fullName">Who is in your mind?</label>
+                    <input className='bg-white text-black' type="text" id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} />
                 </div>
                 <div className="flex flex-col bg-slate-300 ">
-                    <label htmlFor="biography">Write Biography</label>
-                    <textarea id="biography" className="w-96 h-52" value={biography} onChange={(e) => setBiography(e.target.value)} />
+                    <label htmlFor="biography"> Biography...</label>
+                    <textarea  id="biography" className="w-96 h-52 bg-[#E59560]" value={biography} onChange={(e) => setBiography(e.target.value)} />
                 </div>
                 <div className="flex flex-col">
-                    <label htmlFor="image">Image</label>
+                    <label className="text-white" htmlFor="image">Image</label>
                     <input type="file" id="image" accept="image/*" onChange={handleImageChange} />
                 </div>
-                <button onClick={handleUpload}>Upload</button>
+                <button className="text-white hover:pink" onClick={handleUpload}>Upload</button>
             </div>
         </div>
     );

@@ -22,17 +22,20 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex justify-center">
-      <div className="fixed top-0 h-20 w-full flex justify-end items-center">
-        <button className="w-32 h-16 bg-gray-500 rounded-sm mr-3" onClick={() => router.push('/components/Upload')}>Upload</button>
+    <main className="flex flex-col items-center justify-center">
+      <div className=" bg-red-500 h-20 w-full flex justify-between items-center">
+      <div className='w-fulltext-black text-center text-4xl font-black flex items-center justify-center'>OBITUARIES::Get to know their stories</div>
       </div>
-      <div className="mt-24 flex flex-wrap w-11/12 lg:bg-rose-300 items-center justify-between">
+      <button className="w-32 h-16 bg-black rounded-full text-white " onClick={() => router.push('/components/Upload')}>Upload</button>
+
+      <div className="mt-24 flex flex-wrap w-11/12 lg:bg-black items-center justify-between ">
+        
         {obituaries.map(obituary => (
-          <div key={obituary.id} className="bg-white shadow-md rounded-lg p-4 m-4 w-96 h-[500px] overflow-scroll">
+          <div key={obituary.id} className="bg-white shadow-md rounded-bl-full p-4 m-4 w-96 h-[500px] overflow-scroll">
             
              <h2 className="text-xl font-bold">{obituary.fullName}</h2>
             <p>{obituary.biography}</p>
-           
+           <Image src={obituary.image} width={400} height={400} />
           </div>
         ))}
       </div>
