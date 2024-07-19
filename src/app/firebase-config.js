@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAiqmPpec9ClImCVnwZyEsFGQNWU-RpWs0",
-  authDomain: "obituary-ms.firebaseapp.com",
-  projectId: "obituary-ms",
-  storageBucket: "obituary-ms.appspot.com",
-  messagingSenderId: "508448061115",
-  appId: "1:508448061115:web:40df4a0cec62dd3eed9b9e"
+apiKey: "AIzaSyDdRTx8m9ry9q2skL9QgllslchGfqqxa3Q",
+  authDomain: "obituary2-da6c3.firebaseapp.com",
+  projectId: "obituary2-da6c3",
+  storageBucket: "obituary2-da6c3.appspot.com",
+  messagingSenderId: "1097950468146",
+  appId: "1:1097950468146:web:582f5ff4f957f786fa042b"
 };
 
 // Initialize Firebase

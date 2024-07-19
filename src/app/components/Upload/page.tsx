@@ -43,7 +43,7 @@ export default function Upload() {
                     <label htmlFor="fullName">Full Names</label>
                     <input type="text" id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col bg-slate-300 ">
                     <label htmlFor="biography">Write Biography</label>
                     <textarea id="biography" className="w-96 h-52" value={biography} onChange={(e) => setBiography(e.target.value)} />
                 </div>
